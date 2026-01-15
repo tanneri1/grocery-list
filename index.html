@@ -178,6 +178,12 @@
             color: #212529;
         }
 
+        .item-emoji {
+            font-size: 20px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
         .delete-btn {
             width: 32px;
             height: 32px;
@@ -289,6 +295,106 @@
 
         let items = JSON.parse(localStorage.getItem('groceryItems')) || [];
 
+        const emojiMap = {
+            // Fruits
+            apple: '🍎', apples: '🍎', 'green apple': '🍏',
+            banana: '🍌', bananas: '🍌',
+            orange: '🍊', oranges: '🍊', tangerine: '🍊',
+            lemon: '🍋', lemons: '🍋', lime: '🍋', limes: '🍋',
+            grape: '🍇', grapes: '🍇',
+            strawberry: '🍓', strawberries: '🍓',
+            blueberry: '🫐', blueberries: '🫐',
+            watermelon: '🍉', melon: '🍈', cantaloupe: '🍈',
+            peach: '🍑', peaches: '🍑',
+            pear: '🍐', pears: '🍐',
+            cherry: '🍒', cherries: '🍒',
+            pineapple: '🍍', mango: '🥭', mangoes: '🥭',
+            kiwi: '🥝', coconut: '🥥', avocado: '🥑',
+
+            // Vegetables
+            tomato: '🍅', tomatoes: '🍅',
+            carrot: '🥕', carrots: '🥕',
+            corn: '🌽', broccoli: '🥦',
+            cucumber: '🥒', cucumbers: '🥒', pickle: '🥒', pickles: '🥒',
+            lettuce: '🥬', salad: '🥗', kale: '🥬', cabbage: '🥬',
+            potato: '🥔', potatoes: '🥔', sweet potato: '🍠',
+            onion: '🧅', onions: '🧅',
+            garlic: '🧄',
+            pepper: '🌶️', peppers: '🫑', 'bell pepper': '🫑', jalapeno: '🌶️',
+            mushroom: '🍄', mushrooms: '🍄',
+            eggplant: '🍆', aubergine: '🍆',
+            beans: '🫘', peas: '🫛',
+            ginger: '🫚',
+
+            // Proteins
+            chicken: '🍗', turkey: '🦃',
+            beef: '🥩', steak: '🥩', meat: '🥩',
+            bacon: '🥓', ham: '🍖', pork: '🍖', sausage: '🌭',
+            fish: '🐟', salmon: '🐟', tuna: '🐟', shrimp: '🦐', crab: '🦀', lobster: '🦞',
+            egg: '🥚', eggs: '🥚',
+
+            // Dairy
+            milk: '🥛', cheese: '🧀', butter: '🧈',
+            yogurt: '🥛', cream: '🥛', 'ice cream': '🍦',
+
+            // Bread & Grains
+            bread: '🍞', toast: '🍞', loaf: '🍞',
+            bagel: '🥯', croissant: '🥐', pretzel: '🥨',
+            pancake: '🥞', pancakes: '🥞', waffle: '🧇', waffles: '🧇',
+            rice: '🍚', pasta: '🍝', noodles: '🍜', spaghetti: '🍝',
+            cereal: '🥣', oatmeal: '🥣', oats: '🌾',
+            flour: '🌾', wheat: '🌾',
+
+            // Drinks
+            water: '💧', juice: '🧃', 'orange juice': '🍊',
+            coffee: '☕', tea: '🍵',
+            soda: '🥤', pop: '🥤', cola: '🥤', coke: '🥤',
+            beer: '🍺', wine: '🍷',
+            smoothie: '🥤',
+
+            // Snacks & Sweets
+            cookie: '🍪', cookies: '🍪',
+            cake: '🍰', pie: '🥧', cupcake: '🧁',
+            chocolate: '🍫', candy: '🍬', lollipop: '🍭',
+            donut: '🍩', doughnut: '🍩',
+            popcorn: '🍿', chips: '🥔', pretzel: '🥨',
+            nuts: '🥜', peanuts: '🥜', almonds: '🥜',
+            honey: '🍯',
+
+            // Condiments & Pantry
+            salt: '🧂', ketchup: '🍅', sauce: '🥫',
+            oil: '🫒', 'olive oil': '🫒',
+            soup: '🥣', 'canned': '🥫',
+
+            // Prepared Foods
+            pizza: '🍕', burger: '🍔', hamburger: '🍔',
+            sandwich: '🥪', sub: '🥖', wrap: '🌯',
+            taco: '🌮', burrito: '🌯',
+            'hot dog': '🌭', hotdog: '🌭',
+            fries: '🍟', 'french fries': '🍟',
+            sushi: '🍣',
+
+            // Other
+            frozen: '🧊', ice: '🧊',
+            paper: '🧻', 'paper towel': '🧻', 'toilet paper': '🧻',
+            soap: '🧼', detergent: '🧴', shampoo: '🧴',
+            toothpaste: '🪥'
+        };
+
+        function getEmoji(text) {
+            const lower = text.toLowerCase();
+            // Direct match
+            if (emojiMap[lower]) return emojiMap[lower];
+            // Partial match
+            for (const [key, emoji] of Object.entries(emojiMap)) {
+                if (lower.includes(key) || key.includes(lower)) {
+                    return emoji;
+                }
+            }
+            // Default grocery emoji
+            return '🛒';
+        }
+
         function saveItems() {
             localStorage.setItem('groceryItems', JSON.stringify(items));
         }
@@ -304,12 +410,14 @@
         function createItemElement(item, index) {
             const li = document.createElement('li');
             li.className = `grocery-item${item.completed ? ' completed' : ''} item-enter`;
+            const emoji = getEmoji(item.text);
             li.innerHTML = `
                 <div class="checkbox">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M5 13l4 4L19 7"/>
                     </svg>
                 </div>
+                <span class="item-emoji">${emoji}</span>
                 <span class="item-text">${escapeHtml(item.text)}</span>
                 <button class="delete-btn" title="Delete">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
