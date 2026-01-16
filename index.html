@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery List</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
-
         .container {
             max-width: 500px;
             margin: 0 auto;
@@ -26,50 +20,28 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
-
         header {
             background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
-
-        header h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        header p {
-            opacity: 0.9;
-            font-size: 14px;
-        }
-
+        header h1 { font-size: 28px; font-weight: 600; margin-bottom: 5px; }
+        header p { opacity: 0.9; font-size: 14px; }
         .input-section {
             padding: 20px;
             background: #f8f9fa;
             border-bottom: 1px solid #e9ecef;
         }
-
-        .input-wrapper {
-            display: flex;
-            gap: 10px;
-        }
-
+        .input-wrapper { display: flex; gap: 10px; }
         #item-input {
             flex: 1;
             padding: 14px 18px;
             border: 2px solid #e9ecef;
             border-radius: 10px;
             font-size: 16px;
-            transition: border-color 0.2s;
         }
-
-        #item-input:focus {
-            outline: none;
-            border-color: #5a67d8;
-        }
-
+        #item-input:focus { outline: none; border-color: #5a67d8; }
         #add-btn {
             padding: 14px 24px;
             background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
@@ -79,40 +51,12 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
-
-        #add-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(90, 103, 216, 0.4);
-        }
-
-        #add-btn:active {
-            transform: translateY(0);
-        }
-
-        .list-section {
-            padding: 20px;
-            min-height: 300px;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #adb5bd;
-        }
-
-        .empty-state svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        #grocery-list {
-            list-style: none;
-        }
-
+        #add-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(90, 103, 216, 0.4); }
+        .list-section { padding: 20px; min-height: 300px; }
+        .empty-state { text-align: center; padding: 60px 20px; color: #adb5bd; }
+        .empty-state svg { width: 80px; height: 80px; margin-bottom: 20px; opacity: 0.5; }
+        #grocery-list { list-style: none; }
         .grocery-item {
             display: flex;
             align-items: center;
@@ -120,25 +64,12 @@
             background: #f8f9fa;
             border-radius: 10px;
             margin-bottom: 10px;
-            transition: all 0.2s;
         }
-
-        .grocery-item:hover {
-            background: #e9ecef;
-        }
-
-        .grocery-item.completed {
-            opacity: 0.6;
-        }
-
-        .grocery-item.completed .item-text {
-            text-decoration: line-through;
-            color: #6c757d;
-        }
-
+        .grocery-item:hover { background: #e9ecef; }
+        .grocery-item.completed { opacity: 0.6; }
+        .grocery-item.completed .item-text { text-decoration: line-through; color: #6c757d; }
         .checkbox {
-            width: 24px;
-            height: 24px;
+            width: 24px; height: 24px;
             border: 2px solid #ced4da;
             border-radius: 6px;
             margin-right: 14px;
@@ -146,47 +77,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
             flex-shrink: 0;
         }
-
-        .checkbox:hover {
-            border-color: #5a67d8;
-        }
-
-        .grocery-item.completed .checkbox {
-            background: #5a67d8;
-            border-color: #5a67d8;
-        }
-
-        .checkbox svg {
-            width: 14px;
-            height: 14px;
-            stroke: white;
-            stroke-width: 3;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .grocery-item.completed .checkbox svg {
-            opacity: 1;
-        }
-
-        .item-text {
-            flex: 1;
-            font-size: 16px;
-            color: #212529;
-        }
-
-        .item-emoji {
-            font-size: 20px;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
+        .checkbox:hover { border-color: #5a67d8; }
+        .grocery-item.completed .checkbox { background: #5a67d8; border-color: #5a67d8; }
+        .checkbox svg { width: 14px; height: 14px; stroke: white; stroke-width: 3; opacity: 0; }
+        .grocery-item.completed .checkbox svg { opacity: 1; }
+        .item-emoji { font-size: 20px; margin-right: 10px; }
+        .item-text { flex: 1; font-size: 16px; color: #212529; }
         .delete-btn {
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             border: none;
             background: transparent;
             border-radius: 6px;
@@ -194,24 +94,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
             opacity: 0;
         }
-
-        .grocery-item:hover .delete-btn {
-            opacity: 1;
-        }
-
-        .delete-btn:hover {
-            background: #fee2e2;
-        }
-
-        .delete-btn svg {
-            width: 18px;
-            height: 18px;
-            stroke: #ef4444;
-        }
-
+        .grocery-item:hover .delete-btn { opacity: 1; }
+        .delete-btn:hover { background: #fee2e2; }
+        .delete-btn svg { width: 18px; height: 18px; stroke: #ef4444; }
         footer {
             padding: 15px 20px;
             background: #f8f9fa;
@@ -222,36 +109,11 @@
             font-size: 14px;
             color: #6c757d;
         }
-
         #clear-completed {
-            background: none;
-            border: none;
-            color: #ef4444;
-            cursor: pointer;
-            font-size: 14px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.2s;
+            background: none; border: none; color: #ef4444;
+            cursor: pointer; font-size: 14px; padding: 5px 10px; border-radius: 5px;
         }
-
-        #clear-completed:hover {
-            background: #fee2e2;
-        }
-
-        .item-enter {
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        #clear-completed:hover { background: #fee2e2; }
     </style>
 </head>
 <body>
@@ -260,14 +122,12 @@
             <h1>Grocery List</h1>
             <p>Keep track of what you need</p>
         </header>
-
         <div class="input-section">
             <div class="input-wrapper">
                 <input type="text" id="item-input" placeholder="Add an item..." autocomplete="off">
-                <button id="add-btn">Add</button>
+                <button type="button" id="add-btn">Add</button>
             </div>
         </div>
-
         <div class="list-section">
             <ul id="grocery-list"></ul>
             <div class="empty-state" id="empty-state">
@@ -278,213 +138,92 @@
                 <p>Add items above to get started</p>
             </div>
         </div>
-
         <footer>
             <span id="item-count">0 items</span>
-            <button id="clear-completed">Clear completed</button>
+            <button type="button" id="clear-completed">Clear completed</button>
         </footer>
     </div>
-
     <script>
-        const itemInput = document.getElementById('item-input');
-        const addBtn = document.getElementById('add-btn');
-        const groceryList = document.getElementById('grocery-list');
-        const emptyState = document.getElementById('empty-state');
-        const itemCount = document.getElementById('item-count');
-        const clearCompletedBtn = document.getElementById('clear-completed');
-
-        let items = JSON.parse(localStorage.getItem('groceryItems')) || [];
-
-        const emojiMap = {
-            // Fruits
-            apple: '🍎', apples: '🍎', 'green apple': '🍏',
-            banana: '🍌', bananas: '🍌',
-            orange: '🍊', oranges: '🍊', tangerine: '🍊',
-            lemon: '🍋', lemons: '🍋', lime: '🍋', limes: '🍋',
-            grape: '🍇', grapes: '🍇',
-            strawberry: '🍓', strawberries: '🍓',
-            blueberry: '🫐', blueberries: '🫐',
-            watermelon: '🍉', melon: '🍈', cantaloupe: '🍈',
-            peach: '🍑', peaches: '🍑',
-            pear: '🍐', pears: '🍐',
-            cherry: '🍒', cherries: '🍒',
-            pineapple: '🍍', mango: '🥭', mangoes: '🥭',
-            kiwi: '🥝', coconut: '🥥', avocado: '🥑',
-
-            // Vegetables
-            tomato: '🍅', tomatoes: '🍅',
-            carrot: '🥕', carrots: '🥕',
-            corn: '🌽', broccoli: '🥦',
-            cucumber: '🥒', cucumbers: '🥒', pickle: '🥒', pickles: '🥒',
-            lettuce: '🥬', salad: '🥗', kale: '🥬', cabbage: '🥬',
-            potato: '🥔', potatoes: '🥔', sweet potato: '🍠',
-            onion: '🧅', onions: '🧅',
-            garlic: '🧄',
-            pepper: '🌶️', peppers: '🫑', 'bell pepper': '🫑', jalapeno: '🌶️',
-            mushroom: '🍄', mushrooms: '🍄',
-            eggplant: '🍆', aubergine: '🍆',
-            beans: '🫘', peas: '🫛',
-            ginger: '🫚',
-
-            // Proteins
-            chicken: '🍗', turkey: '🦃',
-            beef: '🥩', steak: '🥩', meat: '🥩',
-            bacon: '🥓', ham: '🍖', pork: '🍖', sausage: '🌭',
-            fish: '🐟', salmon: '🐟', tuna: '🐟', shrimp: '🦐', crab: '🦀', lobster: '🦞',
-            egg: '🥚', eggs: '🥚',
-
-            // Dairy
-            milk: '🥛', cheese: '🧀', butter: '🧈',
-            yogurt: '🥛', cream: '🥛', 'ice cream': '🍦',
-
-            // Bread & Grains
-            bread: '🍞', toast: '🍞', loaf: '🍞',
-            bagel: '🥯', croissant: '🥐', pretzel: '🥨',
-            pancake: '🥞', pancakes: '🥞', waffle: '🧇', waffles: '🧇',
-            rice: '🍚', pasta: '🍝', noodles: '🍜', spaghetti: '🍝',
-            cereal: '🥣', oatmeal: '🥣', oats: '🌾',
-            flour: '🌾', wheat: '🌾',
-
-            // Drinks
-            water: '💧', juice: '🧃', 'orange juice': '🍊',
-            coffee: '☕', tea: '🍵',
-            soda: '🥤', pop: '🥤', cola: '🥤', coke: '🥤',
-            beer: '🍺', wine: '🍷',
-            smoothie: '🥤',
-
-            // Snacks & Sweets
-            cookie: '🍪', cookies: '🍪',
-            cake: '🍰', pie: '🥧', cupcake: '🧁',
-            chocolate: '🍫', candy: '🍬', lollipop: '🍭',
-            donut: '🍩', doughnut: '🍩',
-            popcorn: '🍿', chips: '🥔', pretzel: '🥨',
-            nuts: '🥜', peanuts: '🥜', almonds: '🥜',
-            honey: '🍯',
-
-            // Condiments & Pantry
-            salt: '🧂', ketchup: '🍅', sauce: '🥫',
-            oil: '🫒', 'olive oil': '🫒',
-            soup: '🥣', 'canned': '🥫',
-
-            // Prepared Foods
-            pizza: '🍕', burger: '🍔', hamburger: '🍔',
-            sandwich: '🥪', sub: '🥖', wrap: '🌯',
-            taco: '🌮', burrito: '🌯',
-            'hot dog': '🌭', hotdog: '🌭',
-            fries: '🍟', 'french fries': '🍟',
-            sushi: '🍣',
-
-            // Other
-            frozen: '🧊', ice: '🧊',
-            paper: '🧻', 'paper towel': '🧻', 'toilet paper': '🧻',
-            soap: '🧼', detergent: '🧴', shampoo: '🧴',
-            toothpaste: '🪥'
+        var emojiMap = {
+            apple: '🍎', apples: '🍎', banana: '🍌', bananas: '🍌',
+            orange: '🍊', oranges: '🍊', lemon: '🍋', grape: '🍇', grapes: '🍇',
+            strawberry: '🍓', strawberries: '🍓', watermelon: '🍉',
+            peach: '🍑', pear: '🍐', cherry: '🍒', pineapple: '🍍',
+            mango: '🥭', kiwi: '🥝', avocado: '🥑', tomato: '🍅', tomatoes: '🍅',
+            carrot: '🥕', carrots: '🥕', corn: '🌽', broccoli: '🥦',
+            cucumber: '🥒', lettuce: '🥬', salad: '🥗', potato: '🥔', potatoes: '🥔',
+            onion: '🧅', garlic: '🧄', pepper: '🌶', mushroom: '🍄', eggplant: '🍆',
+            chicken: '🍗', turkey: '🦃', beef: '🥩', steak: '🥩', meat: '🥩',
+            bacon: '🥓', ham: '🍖', pork: '🍖', fish: '🐟', salmon: '🐟',
+            shrimp: '🦐', egg: '🥚', eggs: '🥚', milk: '🥛', cheese: '🧀',
+            butter: '🧈', yogurt: '🥛', bread: '🍞', bagel: '🥯', rice: '🍚',
+            pasta: '🍝', cereal: '🥣', water: '💧', juice: '🧃', coffee: '☕',
+            tea: '🍵', soda: '🥤', beer: '🍺', wine: '🍷', cookie: '🍪',
+            cookies: '🍪', cake: '🍰', pie: '🥧', chocolate: '🍫', candy: '🍬',
+            donut: '🍩', popcorn: '🍿', nuts: '🥜', honey: '🍯', salt: '🧂',
+            pizza: '🍕', burger: '🍔', sandwich: '🥪', taco: '🌮', hotdog: '🌭',
+            fries: '🍟', sushi: '🍣', soap: '🧼', paper: '🧻'
         };
 
         function getEmoji(text) {
-            const lower = text.toLowerCase();
-            // Direct match
+            var lower = text.toLowerCase();
             if (emojiMap[lower]) return emojiMap[lower];
-            // Partial match
-            for (const [key, emoji] of Object.entries(emojiMap)) {
-                if (lower.includes(key) || key.includes(lower)) {
-                    return emoji;
-                }
+            for (var key in emojiMap) {
+                if (lower.indexOf(key) >= 0) return emojiMap[key];
             }
-            // Default grocery emoji
             return '🛒';
         }
 
-        function saveItems() {
-            localStorage.setItem('groceryItems', JSON.stringify(items));
+        var items = JSON.parse(localStorage.getItem('groceryItems') || '[]');
+
+        function save() { localStorage.setItem('groceryItems', JSON.stringify(items)); }
+
+        function render() {
+            var list = document.getElementById('grocery-list');
+            var empty = document.getElementById('empty-state');
+            var count = document.getElementById('item-count');
+            list.innerHTML = '';
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                var li = document.createElement('li');
+                li.className = 'grocery-item' + (item.done ? ' completed' : '');
+                li.innerHTML = '<div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>' +
+                    '<span class="item-emoji">' + getEmoji(item.text) + '</span>' +
+                    '<span class="item-text">' + item.text + '</span>' +
+                    '<button class="delete-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>';
+                (function(idx) {
+                    li.querySelector('.checkbox').onclick = function() { items[idx].done = !items[idx].done; save(); render(); };
+                    li.querySelector('.delete-btn').onclick = function() { items.splice(idx, 1); save(); render(); };
+                })(i);
+                list.appendChild(li);
+            }
+            empty.style.display = items.length ? 'none' : 'block';
+            var done = items.filter(function(x) { return x.done; }).length;
+            count.textContent = items.length + ' item' + (items.length !== 1 ? 's' : '') + (done ? ' (' + done + ' done)' : '');
         }
 
-        function updateUI() {
-            const total = items.length;
-            const completed = items.filter(item => item.completed).length;
+        document.getElementById('add-btn').onclick = function() {
+            var input = document.getElementById('item-input');
+            var text = input.value.trim();
+            if (text) {
+                items.unshift({ text: text, done: false });
+                save();
+                render();
+                input.value = '';
+            }
+        };
 
-            itemCount.textContent = `${total} item${total !== 1 ? 's' : ''}${completed > 0 ? ` (${completed} done)` : ''}`;
-            emptyState.style.display = items.length === 0 ? 'block' : 'none';
-        }
+        document.getElementById('item-input').onkeypress = function(e) {
+            if (e.key === 'Enter') document.getElementById('add-btn').onclick();
+        };
 
-        function createItemElement(item, index) {
-            const li = document.createElement('li');
-            li.className = `grocery-item${item.completed ? ' completed' : ''} item-enter`;
-            const emoji = getEmoji(item.text);
-            li.innerHTML = `
-                <div class="checkbox">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M5 13l4 4L19 7"/>
-                    </svg>
-                </div>
-                <span class="item-emoji">${emoji}</span>
-                <span class="item-text">${escapeHtml(item.text)}</span>
-                <button class="delete-btn" title="Delete">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                    </svg>
-                </button>
-            `;
+        document.getElementById('clear-completed').onclick = function() {
+            items = items.filter(function(x) { return !x.done; });
+            save();
+            render();
+        };
 
-            li.querySelector('.checkbox').addEventListener('click', () => toggleItem(index));
-            li.querySelector('.delete-btn').addEventListener('click', () => deleteItem(index));
-
-            return li;
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function renderList() {
-            groceryList.innerHTML = '';
-            items.forEach((item, index) => {
-                groceryList.appendChild(createItemElement(item, index));
-            });
-            updateUI();
-        }
-
-        function addItem(text) {
-            const trimmed = text.trim();
-            if (!trimmed) return;
-
-            items.unshift({ text: trimmed, completed: false });
-            saveItems();
-            renderList();
-            itemInput.value = '';
-            itemInput.focus();
-        }
-
-        function toggleItem(index) {
-            items[index].completed = !items[index].completed;
-            saveItems();
-            renderList();
-        }
-
-        function deleteItem(index) {
-            items.splice(index, 1);
-            saveItems();
-            renderList();
-        }
-
-        function clearCompleted() {
-            items = items.filter(item => !item.completed);
-            saveItems();
-            renderList();
-        }
-
-        addBtn.addEventListener('click', () => addItem(itemInput.value));
-
-        itemInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') addItem(itemInput.value);
-        });
-
-        clearCompletedBtn.addEventListener('click', clearCompleted);
-
-        // Initial render
-        renderList();
+        render();
     </script>
 </body>
 </html>
